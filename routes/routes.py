@@ -7,7 +7,7 @@ from models.saida import Saida
 routes_bp = Blueprint("routes", __name__)
 
 # ======================
-# MOCK DATA (em memória)
+# MOCK DATA (em memória) ------> VINICIUS
 # ======================
 produtos = [
     Produto(id=1, nome="Notebook Dell", quantidade=10),
@@ -34,16 +34,16 @@ def _find_produto(produto_id: int):
 
 
 # ======================
-# PRODUTOS
+# PRODUTOS ----------------> CAIO
 # ======================
 
 
-@routes_bp.route("/produtos", methods=["GET"])
+@routes_bp.route("/produtos", methods=["GET"]) ## -----------> CAIO - endpoint GET
 def listar_produtos():
     return jsonify([p.to_dict() for p in produtos])
 
 
-@routes_bp.route("/produtos", methods=["POST"])
+@routes_bp.route("/produtos", methods=["POST"]) ## -------------> CAIO - endpoint POST
 def criar_produto():
     data = _json_body()
 
@@ -65,20 +65,20 @@ def criar_produto():
 
     produto = Produto(id=len(produtos) + 1, nome=nome, quantidade=quantidade)
     produtos.append(produto)
-    return jsonify(produto.to_dict()), 201
+    return jsonify(produto.to_dict()), 201 ## -----------> CAIO
 
 
 # ======================
-# ENTRADAS
+# ENTRADAS ------------------> CAIO
 # ======================
 
 
-@routes_bp.route("/entradas", methods=["GET"])
+@routes_bp.route("/entradas", methods=["GET"]) ## -------------> CAIO
 def listar_entradas():
     return jsonify([e.to_dict() for e in entradas])
 
 
-@routes_bp.route("/entradas", methods=["POST"])
+@routes_bp.route("/entradas", methods=["POST"]) ## ---------------> CAIO
 def registrar_entrada():
     data = _json_body()
 
@@ -97,33 +97,33 @@ def registrar_entrada():
     if not _texto_valido(data.get("fornecedor")):
         return jsonify({"erro": "Campo 'fornecedor' é obrigatório"}), 400
 
-    produto = _find_produto(produto_id)
+    produto = _find_produto(produto_id) ## -----------> VINICIUS
     if produto is None:
         return jsonify({"erro": "Produto não encontrado"}), 404
 
-    produto.adicionar_estoque(quantidade)
+    produto.adicionar_estoque(quantidade) ## -----------> VINICIUS 
 
-    entrada = Entrada(
+    entrada = Entrada( ## ------------> VINICIUS
         id=produto_id,
         quantidade=quantidade,
         data=data.get("data"),
         fornecedor=data.get("fornecedor"),
     )
-    entradas.append(entrada)
-    return jsonify(entrada.to_dict()), 201
+    entradas.append(entrada) ## -----------> VINICIUS
+    return jsonify(entrada.to_dict()), 201 ## ------------> CAIO
 
 
 # ======================
-# SAÍDAS
+# SAÍDAS ------------------> CAIO
 # ======================
 
 
-@routes_bp.route("/saidas", methods=["GET"])
+@routes_bp.route("/saidas", methods=["GET"]) ## ---------------> CAIO
 def listar_saidas():
     return jsonify([s.to_dict() for s in saidas])
 
 
-@routes_bp.route("/saidas", methods=["POST"])
+@routes_bp.route("/saidas", methods=["POST"])## --------------> CAIO
 def registrar_saida():
     data = _json_body()
 
@@ -142,22 +142,22 @@ def registrar_saida():
     if not _texto_valido(data.get("cliente")):
         return jsonify({"erro": "Campo 'cliente' é obrigatório"}), 400
 
-    produto = _find_produto(produto_id)
+    produto = _find_produto(produto_id) ## ------------> VINICIUS
     if produto is None:
         return jsonify({"erro": "Produto não encontrado"}), 404
 
-    result = produto.remover_estoque(quantidade)
-    if result == "Quantidade insuficiente":
-        return jsonify({"erro": "Estoque insuficiente"}), 400
+    result = produto.remover_estoque(quantidade) ## ------------> VINICIUS
+    if result == "Quantidade insuficiente": ## --------------> VINICIUS
+        return jsonify({"erro": "Estoque insuficiente"}), 400 ## ----------> VINICIUS
 
-    saida = Saida(
+    saida = Saida( ## -----------> VINICIUS
         id=produto_id,
         quantidade=quantidade,
         data=data.get("data"),
         cliente=data.get("cliente"),
     )
-    saidas.append(saida)
-    return jsonify(saida.to_dict()), 201
+    saidas.append(saida) ## --------------> VINICIUS
+    return jsonify(saida.to_dict()), 201 ## --------------> CAIO
 
 
 def register_routes(app):
