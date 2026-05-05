@@ -51,7 +51,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"produto_id\": 1,\n  \"quantidade\": 5,\n  \"data\": \"2026-05-04\",\n  \"fornecedor\": \"Distribuidora X\"\n}"
+          "raw": "{\n  \"id\": 1,\n  \"quantidade\": 5,\n  \"data\": \"2026-05-04\",\n  \"fornecedor\": \"Distribuidora X\"\n}"
         },
         "url": {
           "raw": "{{baseUrl}}/entradas",
@@ -81,7 +81,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"produto_id\": 1,\n  \"quantidade\": 3,\n  \"data\": \"2026-05-04\",\n  \"cliente\": \"Cliente A\"\n}"
+          "raw": "{\n  \"id\": 1,\n  \"quantidade\": 3,\n  \"data\": \"2026-05-04\",\n  \"cliente\": \"Cliente A\"\n}"
         },
         "url": {
           "raw": "{{baseUrl}}/saidas",
@@ -111,7 +111,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"produto_id\": 1,\n  \"quantidade\": 9999,\n  \"data\": \"2026-05-04\",\n  \"cliente\": \"Cliente B\"\n}"
+          "raw": "{\n  \"id\": 1,\n  \"quantidade\": 9999,\n  \"data\": \"2026-05-04\",\n  \"cliente\": \"Cliente B\"\n}"
         },
         "url": {
           "raw": "{{baseUrl}}/saidas",
