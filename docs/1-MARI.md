@@ -99,7 +99,6 @@ Deve possuir:
 ## Entrada
 Deve conter:
 - id
-- produto_id
 - quantidade
 - data
 - fornecedor
@@ -113,7 +112,6 @@ Deve possuir:
 ## Saida
 Deve conter:
 - id
-- produto_id
 - quantidade
 - data
 - cliente

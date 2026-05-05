@@ -110,7 +110,7 @@ POST /entradas
 Content-Type: application/json
 
 {
-    "produto_id": 1,
+    "id": 1,
     "quantidade": 20,
     "data": "2024-01-15",
     "fornecedor": "Distribuidora Tech"
@@ -124,7 +124,7 @@ POST /saidas
 Content-Type: application/json
 
 {
-    "produto_id": 1,
+    "id": 1,
     "quantidade": 5,
     "data": "2024-01-16",
     "cliente": "Empresa ABC"

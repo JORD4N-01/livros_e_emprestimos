@@ -49,7 +49,6 @@ Garantir que todos os desenvolvedores (e ferramentas de IA) sigam o mesmo padrã
 ```json
 {
   "id": 1,
-  "produto_id": 1,
   "quantidade": 20,
   "data": "2024-01-15",
   "fornecedor": "Distribuidora Tech"
@@ -61,7 +60,6 @@ Garantir que todos os desenvolvedores (e ferramentas de IA) sigam o mesmo padrã
 ```json
 {
   "id": 1,
-  "produto_id": 1,
   "quantidade": 5,
   "data": "2024-01-16",
   "cliente": "Empresa ABC"

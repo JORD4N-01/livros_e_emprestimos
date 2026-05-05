@@ -83,10 +83,10 @@ def registrar_entrada():
     data = _json_body()
 
     try:
-        produto_id = int(data.get("produto_id"))
+        produto_id = int(data.get("id"))
         quantidade = int(data.get("quantidade"))
     except (TypeError, ValueError):
-        return jsonify({"erro": "Campos 'produto_id' e 'quantidade' devem ser números"}), 400
+        return jsonify({"erro": "Campos 'id' e 'quantidade' devem ser números"}), 400
 
     if quantidade <= 0:
         return jsonify({"erro": "Campo 'quantidade' deve ser maior que zero"}), 400
@@ -104,8 +104,7 @@ def registrar_entrada():
     produto.adicionar_estoque(quantidade)
 
     entrada = Entrada(
-        id=len(entradas) + 1,
-        produto_id=produto_id,
+        id=produto_id,
         quantidade=quantidade,
         data=data.get("data"),
         fornecedor=data.get("fornecedor"),
@@ -129,10 +128,10 @@ def registrar_saida():
     data = _json_body()
 
     try:
-        produto_id = int(data.get("produto_id"))
+        produto_id = int(data.get("id"))
         quantidade = int(data.get("quantidade"))
     except (TypeError, ValueError):
-        return jsonify({"erro": "Campos 'produto_id' e 'quantidade' devem ser números"}), 400
+        return jsonify({"erro": "Campos 'id' e 'quantidade' devem ser números"}), 400
 
     if quantidade <= 0:
         return jsonify({"erro": "Campo 'quantidade' deve ser maior que zero"}), 400
@@ -152,8 +151,7 @@ def registrar_saida():
         return jsonify({"erro": "Estoque insuficiente"}), 400
 
     saida = Saida(
-        id=len(saidas) + 1,
-        produto_id=produto_id,
+        id=produto_id,
         quantidade=quantidade,
         data=data.get("data"),
         cliente=data.get("cliente"),
