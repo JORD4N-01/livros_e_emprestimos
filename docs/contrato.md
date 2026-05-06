@@ -1,6 +1,6 @@
 # 📜 Contrato de Desenvolvimento — Controle de Estoque API
 
-## 🤖 Regra de Uso de IA (OBRIGATÓRIO)
+## 🤖 Regra de Uso de IA
 
 Ao gerar código com IA, SEMPRE:
 
