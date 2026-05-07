@@ -18,4 +18,3 @@ class Produto:
         if quantidade > self.quantidade:
             return "Quantidade insuficiente"
         self.quantidade -= quantidade
-        return "Sucesso"

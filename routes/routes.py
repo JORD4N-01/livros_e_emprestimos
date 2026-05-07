@@ -63,8 +63,7 @@ def criar_produto():
     if quantidade < 0:
         return jsonify({"erro": "Campo 'quantidade' não pode ser negativo"}), 400
 
-    novo_id = max([p.id for p in produtos], default=0) + 1
-    produto = Produto(id=novo_id, nome=nome, quantidade=quantidade)
+    produto = Produto(id=len(produtos) + 1, nome=nome, quantidade=quantidade)
     produtos.append(produto)
     return jsonify(produto.to_dict()), 201 ## -----------> CAIO
 
@@ -150,8 +149,6 @@ def registrar_saida():
     result = produto.remover_estoque(quantidade) ## ------------> VINICIUS
     if result == "Quantidade insuficiente": ## --------------> VINICIUS
         return jsonify({"erro": "Estoque insuficiente"}), 400 ## ----------> VINICIUS
-    if result != "Sucesso": ## Tratamento de erro genérico
-        return jsonify({"erro": "Erro ao registrar saída"}), 400
 
     saida = Saida( ## -----------> VINICIUS
         id=produto_id,
